@@ -46,6 +46,15 @@ export function parsePath(path) {
 }
 
 export function createPath(location) {
+  if (location instanceof String) {
+    location = {
+      pathname: location.valueOf(),
+      search: '',
+      hash: '',
+      state: null
+    };
+  }
+
   const { pathname, search, hash } = location;
 
   let path = pathname || '/';
